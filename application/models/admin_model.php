@@ -14,6 +14,23 @@ class admin_model extends CI_model{
       return $query->result();
     }
 
+    public function createProduct()
+    {
+      $data = array(
+        'name' => $this->input->post('name'),
+        'price' => $this->input->post('price'),
+        'stock' => $this->input->post('stock'),
+       );
+       $this->db->insert('product', $data);
+    }
+
+    public function detailProduct($id)
+    {
+      $where = array('id' => $id);
+      $query = $this->db->get_where('product', $where);
+      return $query->row();
+    }
+
     public function getParkList()
     {
       $where = array('status' => 1);

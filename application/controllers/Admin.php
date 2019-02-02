@@ -10,10 +10,18 @@ class Admin extends CI_Controller{
   public function product()
   {
     if ($this->input->post('createProduct')) {
-      // code...
+      $this->admin_model->createProduct();
+
     }
     $data['list'] = $this->admin_model->getProduct();
     $data['view_name'] = 'product';
+    $this->load->view('template',$data);
+  }
+
+  public function detailProduct($id)
+  {
+    $data['detail'] = $this->admin_model->detailProduct($id);
+    $data['view_name'] = 'detailProduct';
     $this->load->view('template',$data);
   }
 

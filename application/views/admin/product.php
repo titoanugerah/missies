@@ -9,16 +9,23 @@
     <br>
 
     <div class="form-group">
-      <label class="col-sm-2 control-label">Product Name</label>
-      <div class="col-sm-9">
+      <label class="col-sm-3 control-label">Product Name</label>
+      <div class="col-sm-8">
         <input type="text" class="form-control" placeholder="Input with productname " name="name">
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-sm-2 control-label">Price</label>
-      <div class="col-sm-9">
+      <label class="col-sm-3 control-label">Price</label>
+      <div class="col-sm-8">
         <input type="text" class="form-control" placeholder="Input without Rp." name="price">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Initial Stock</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" placeholder="Initial stock if necesary" name="stock">
       </div>
     </div>
     <!-- /.box-body -->

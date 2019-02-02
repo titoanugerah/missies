@@ -12,6 +12,7 @@ $route['parkOut'] = 'user/parkOut';
 $route['payPark/(:any)'] = 'user/payPark/$1';
 
 $route['product'] = 'admin/product';
+$route['detailProduct/(:any)'] = 'admin/detailProduct/$1';
 $route['parkReport'] = 'admin/parkReport';
 $route['deleteReport/(:any)'] = 'admin/deleteReport/$1';
 $route['downloadParkReport'] = 'admin/downloadReport';
