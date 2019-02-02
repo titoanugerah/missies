@@ -7,6 +7,10 @@ $route['dashboard'] = 'home/dashboard';
 $route['profile'] = 'home/profile';
 $route['logout'] = 'home/logout';
 
+$route['listProduct'] = 'user/listProduct';
+$route['selectProduct/(:any)'] = 'user/selectProduct/$1';
+$route['teller'] = 'user/teller';
+$route['inputTeller/(:any)'] = 'user/inputTeller/$1';
 $route['parkIn'] = 'user/parkIn';
 $route['parkOut'] = 'user/parkOut';
 $route['payPark/(:any)'] = 'user/payPark/$1';

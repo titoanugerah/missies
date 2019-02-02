@@ -5,22 +5,32 @@ class Admin extends CI_Controller{
   {
     parent::__construct();
     $this->load->model('admin_model');
+    $this->load->model('user_model');
   }
 
   public function product()
   {
     if ($this->input->post('createProduct')) {
-      $this->admin_model->createProduct();
+      $this->user_model->createProduct();
 
     }
-    $data['list'] = $this->admin_model->getProduct();
+    $data['list'] = $this->user_model->getProduct();
     $data['view_name'] = 'product';
     $this->load->view('template',$data);
   }
 
   public function detailProduct($id)
   {
-    $data['detail'] = $this->admin_model->detailProduct($id);
+    $data['detail'] = $this->user_model->detailProduct($id);
+    if ($this->input->post('updateProduct')) {
+      $this->user_model->updateProduct($id);
+    } elseif ($this->input->post('updateStock')) {
+      $this->user_model->updateStock($id, $data['detail']->stock);
+    } elseif ($this->input->post('deleteProduct')) {
+      $url = $this->admin_model->deleteProduct($id);
+      redirect(base_url($url));
+    }
+    $data['detail'] = $this->user_model->detailProduct($id);
     $data['view_name'] = 'detailProduct';
     $this->load->view('template',$data);
   }
