@@ -9,25 +9,25 @@
         <tr>
           <th>ID Trx</th>
           <th>Date</th>
-          <th>PIC</th>
+          <th>Method</th>
           <th>Qty</th>
           <th>Subtotal</th>
         </tr>
       </thead>
       <tbody>
           <tr>
-            <td><?php echo $i; ?></td>
+            <td><?php echo $overview['result']['id']; ?></td>
             <td><?php echo $overview['result']['date']; ?></td>
-            <td><?php echo $overview['result']['fullname']; ?></td>
+            <td><?php echo $overview['result']['method']; ?></td>
             <td><?php echo $overview['result']['item']; ?></td>
-            <td><?php echo 'Rp. '.$overview['result']['subtotal']; ?></td>
+            <td><?php echo 'Rp. '.$overview['result']['total']; ?></td>
           </tr>
         </tbody>
         <tfoot>
           <tr>
             <th>ID Trx</th>
             <th>Date</th>
-            <th>PIC</th>
+            <th>Method</th>
             <th>Qty</th>
             <th>Subtotal</th>
           </tr>

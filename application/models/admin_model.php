@@ -20,19 +20,6 @@ class admin_model extends CI_model{
       return $url;
     }
 
-    public function getParkList()
-    {
-      $where = array('status' => 1);
-      $query = $this->db->get_where('view_park',$where);
-      return $query->result();
-    }
-
-    public function deleteReport($id)
-    {
-      $where = array('id' => $id );
-      $this->db->delete('park',$where);
-      $this->load->library('Excel');
-      }
 
     public function downloadReport($filename, $data)
     {

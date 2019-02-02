@@ -35,19 +35,6 @@ class Admin extends CI_Controller{
     $this->load->view('template',$data);
   }
 
-  public function parkReport()
-  {
-    $data['parklist'] = $this->admin_model->getParkList();
-    $data['view_name'] = 'parkReport';
-    $this->load->view('template',$data);
-  }
-
-  public function deleteReport($id)
-  {
-    $this->admin_model->deleteReport($id);
-    redirect(base_url('parkReport'));
-  }
-
   public function downloadReport()
   {
     $data['parklist'] = $this->admin_model->getParkList();

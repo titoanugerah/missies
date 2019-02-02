@@ -88,6 +88,14 @@ class user_model extends CI_model{
       return $query->result();
     }
 
+    public function updateMethod($id,$method)
+    {
+      $where = array('id' => $id);
+      $data = array('method' => $method );
+      $this->db->where($where);
+      $this->db->update('trx', $data);
+    }
+
     public function addToCart($id, $discount)
     {
       $data = array(
@@ -97,6 +105,7 @@ class user_model extends CI_model{
         'discount' => $discount
        );
        $this->db->insert('detail_trx', $data);
+       $this->updateMethod($id,$this->input->post('method'));
     }
 
     public function deleteInputTrx($id)
@@ -105,17 +114,6 @@ class user_model extends CI_model{
       $this->db->delete('detail_trx', $where);
     }
 
-    public function createParkRecord()
-    {
-      $data = array(
-        'vehicle_type' => $this->input->post('vehicle_type'),
-        'vehicle_id' => $this->input->post('vehicle_id'),
-        'vehicle_owner' => $this->input->post('vehicle_owner'),
-        'id_pic' => $this->session->userdata['id']
-       );
-
-       $this->db->insert('park',$data);
-    }
 
     public function getOverview($id)
     {
@@ -132,42 +130,14 @@ class user_model extends CI_model{
           'id_pic'=> $this->session->userdata['id'],
           'fullname'=> $this->session->userdata['fullname'],
           'item' => 0,
-          'subtotal' => 0
+          'subtotal' => 0,
+          'method' => 'UNKW'
         );
       }
       return $data;
     }
 
-    public function getParkList()
-    {
-      $where = array('status' => 0);
-      $query = $this->db->get_where('park',$where);
-      return $query->result();
-    }
 
-    public function getSelectedParkList()
-    {
-      $where = array('id' => $this->input->post('id'));
-      $query = $this->db->get_where('view_park',$where);
-      return $query->row();
-    }
-
-    public function setCheckOut()
-    {
-      date_default_timezone_set("Asia/Bangkok");
-      $where = array('id' => $this->input->post('id'));
-      $data = array('end_time' => date("Y-m-d H:i:s"));
-      $this->db->where($where);
-      $this->db->update('park',$data);
-    }
-
-    public function finishPark($id)
-    {
-      $where = array('id' => $id);
-      $data = array('status' => 1 );
-      $this->db->where($where);
-      $this->db->update('park',$data);
-    }
 }
 
  ?>

@@ -9,7 +9,7 @@
         <tr>
           <th>ID Trx</th>
           <th>Date</th>
-          <th>PIC</th>
+          <th>Method</th>
           <th>Item</th>
           <th>Subtotal</th>
         </tr>
@@ -18,7 +18,7 @@
           <tr>
             <td><?php echo $overview['result']->id; ?></td>
             <td><?php echo $overview['result']->date; ?></td>
-            <td><?php echo $overview['result']->fullname; ?></td>
+            <td><?php echo $overview['result']->method; ?></td>
             <td><?php echo $overview['result']->item; ?></td>
             <td><?php echo 'Rp. '.$overview['result']->subtotal; ?></td>
           </tr>
@@ -27,7 +27,7 @@
           <tr>
             <th>ID Trx</th>
             <th>Date</th>
-            <th>PIC</th>
+            <th>Method</th>
             <th>Item</th>
             <th>Subtotal</th>
           </tr>
