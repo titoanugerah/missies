@@ -61,7 +61,7 @@
             <td><?php echo $item->qty; ?></td>
             <td><?php echo 'Rp. '.$item->discount; ?></td>
             <td><?php echo 'Rp. '.$item->total; ?></td>
-            <td><a href="<?php echo base_url('deleteInputTrx/'.$item->id);?>">delete</a></td>
+            <td><a href="<?php echo base_url('deleteInputTrx/'.$item->id_trx.'/'.$item->id);?>">delete</a></td>
           </tr>
           <?php $i++; endforeach; ?>
         </tbody>
@@ -80,3 +80,10 @@
     </div>
     <!-- /.box-body -->
   </div>
+
+  <?php if ($overview['status']==0) {
+    $this->load->view('user/status0');
+  } else {
+    $this->load->view('user/status1');
+
+  } ?>

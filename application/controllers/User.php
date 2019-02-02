@@ -40,12 +40,19 @@ class User extends CI_Controller{
     redirect(base_url('inputTeller/'.$id));
   }
 
+  public function deleteInputTrx($idTrx, $id)
+  {
+    $this->user_model->deleteInputTrx($id);
+    redirect(base_url('inputTeller/'.$idTrx));
+  }
+
   public function inputTeller($id)
   {
     if ($this->input->post('addToCart')) {
       $product = $this->user_model->detailProduct($this->input->post('id_product'));
       $this->user_model->addToCart($id, $product->discount);
     }
+    $data['overview'] = $this->user_model->getOverview($id);
     $data['list'] = $this->user_model->getListTrx($id);
     $data['trx'] = $this->user_model->getTrxDetail($id);
     $data['product'] = $this->user_model->getProduct();

@@ -99,6 +99,12 @@ class user_model extends CI_model{
        $this->db->insert('detail_trx', $data);
     }
 
+    public function deleteInputTrx($id)
+    {
+      $where = array('id' => $id);
+      $this->db->delete('detail_trx', $where);
+    }
+
     public function createParkRecord()
     {
       $data = array(
@@ -109,6 +115,27 @@ class user_model extends CI_model{
        );
 
        $this->db->insert('park',$data);
+    }
+
+    public function getOverview($id)
+    {
+      $where = array('id' => $id);
+      $query = $this->db->get_where('view_trx', $where);
+      if ($query->num_rows()>0) {
+        $data['result'] = $query->row();
+        $data['status'] = 1;
+      } else {
+        $data['status'] = 0;
+        $data['result'] = array(
+          'id' => $id,
+          'date'=> date('Y-m-d h:i:sa'),
+          'id_pic'=> $this->session->userdata['id'],
+          'fullname'=> $this->session->userdata['fullname'],
+          'item' => 0,
+          'subtotal' => 0
+        );
+      }
+      return $data;
     }
 
     public function getParkList()
