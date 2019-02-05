@@ -35,6 +35,14 @@ class Admin extends CI_Controller{
     $this->load->view('template',$data);
   }
 
+  public function downloadDailyReport()
+  {
+    $data['list'] = $this->user_model->getSoldItem();
+    $filename = 'Laporan Parkir '.date('d-m-Y').".xls";
+    $this->admin_model->downloadReport($filename, $data['list']);
+
+  }
+
   public function downloadReport()
   {
     $data['parklist'] = $this->admin_model->getParkList();

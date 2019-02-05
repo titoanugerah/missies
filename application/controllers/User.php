@@ -23,13 +23,14 @@ class User extends CI_Controller{
     $data['detail'] = $this->user_model->detailProduct($id);
     if ($this->input->post('updateProduct')) {
       $this->user_model->updateProduct($id);
+      redirect(base_url('selectProduct/'.$id));
     } elseif ($this->input->post('updateStock')) {
       $this->user_model->updateStock($id, $data['detail']->stock);
+      redirect(base_url('selectProduct/'.$id));
     } elseif ($this->input->post('deleteProduct')) {
       $url = $this->user_model->deleteProduct($id);
       redirect(base_url($url));
     }
-    $data['detail'] = $this->user_model->detailProduct($id);
     $data['view_name'] = 'selectProduct';
     $this->load->view('template',$data);
   }
@@ -51,6 +52,7 @@ class User extends CI_Controller{
     if ($this->input->post('addToCart')) {
       $product = $this->user_model->detailProduct($this->input->post('id_product'));
       $this->user_model->addToCart($id, $product->discount);
+      redirect(base_url('inputTeller/'.$id));
     }
     $data['overview'] = $this->user_model->getOverview($id);
     $data['list'] = $this->user_model->getListTrx($id);
@@ -60,6 +62,22 @@ class User extends CI_Controller{
     $this->load->view('template',$data);
   }
 
+  public function listTeller()
+  {
+    $data['list2'] = $this->user_model->getSoldItemDaily();
+    $data['list'] = $this->user_model->getListTellerDaily();
+    $data['view_name'] = 'listTeller';
+    $this->load->view('template',$data);
+
+  }
+
+  public function downloadDailyReport()
+  {
+    $data['list'] = $this->user_model->getSoldItemDaily();
+    $filename = 'Laporan Penjualan Missies '.date('d-m-Y').".xls";
+    $this->user_model->downloadReport($filename, $data['list']);
+
+  }
 
 }
  ?>

@@ -4,7 +4,7 @@
   <li class="header">Recap</li>
   <li><a href="<?php echo base_url('product');?>"><i class="fa fa-tags"></i> Product</a></li>
   <li class="header">Download</li>
-  <li><a href="<?php echo base_url('downloadParkReport');?>"><i class="fa fa-download"></i>Laporan Parkir</a></li>
+  <li><a href="<?php echo base_url('downloadDailyReport');?>"><i class="fa fa-download"></i>Download Report</a></li>
 
 
 

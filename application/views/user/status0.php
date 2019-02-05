@@ -20,7 +20,7 @@
             <td><?php echo $overview['result']['date']; ?></td>
             <td><?php echo $overview['result']['method']; ?></td>
             <td><?php echo $overview['result']['item']; ?></td>
-            <td><?php echo 'Rp. '.$overview['result']['total']; ?></td>
+            <td><?php echo 'Rp. '.$overview['result']['subtotal']; ?></td>
           </tr>
         </tbody>
         <tfoot>
